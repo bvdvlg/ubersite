@@ -1,0 +1,7 @@
+{
+    "json2dict": {
+      "host": "converter",
+      "auth_required": false,
+      "path": "/json2dict"
+    }
+  }

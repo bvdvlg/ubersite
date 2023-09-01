@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sm-deployment
+  labels:
+    app: sm
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: sm
+  template:
+    metadata:
+      labels:
+        app: sm
+    spec:
+      containers:
+      - name: sm
+        image: 158.160.22.115:5000/ubersite/service_manager:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8000
+          name: http-sm-svc

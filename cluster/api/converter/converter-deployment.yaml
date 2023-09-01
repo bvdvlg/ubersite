@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: converter-deployment
+  labels:
+    app: converter
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: converter
+  template:
+    metadata:
+      labels:
+        app: converter
+    spec:
+      containers:
+      - name: converter
+        image: 158.160.22.115:5000/ubersite/converter:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8000
+          name: http-conv-svc
