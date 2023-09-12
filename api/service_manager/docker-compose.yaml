@@ -1,0 +1,26 @@
+version: "3"
+services:
+  service_manager_testing:
+    build:
+      context: ./
+      dockerfile: deployment/Dockerfile
+    environment:
+      service_settings_configuration_file: "configuration/configs/testing.json"
+    ports:
+    - "8001:8001"
+  service_manager_prestable:
+    build:
+      context: ./
+      dockerfile: deployment/Dockerfile
+    environment:
+      service_settings_configuration_file: "configuration/configs/prestable.json"
+    ports:
+    - "8001:8001"
+  service_manager_production:
+    build:
+      context: ./
+      dockerfile: deployment/Dockerfile
+    environment:
+      service_settings_configuration_file: "configuration/configs/production.json"
+    ports:
+    - "8001:8001"

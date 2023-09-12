@@ -1,0 +1,20 @@
+version: "3"
+services:
+  converter_testing:
+    build:
+      context: ./
+      dockerfile: deployment/Dockerfile
+    ports:
+    - "8001:8001"
+  converter_prestable:
+    build:
+      context: ./
+      dockerfile: deployment/Dockerfile
+    ports:
+    - "8001:8001"
+  converter_production:
+    build:
+      context: ./
+      dockerfile: deployment/Dockerfile
+    ports:
+    - "8001:8001"

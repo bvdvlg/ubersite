@@ -1,11 +1,35 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: sm
+  name: sm-service-testing
 spec:
   ports:
     - protocol: TCP
       port: 80
-      targetPort: http-sm-svc
+      targetPort: http-sm-testing
+  selector:
+    app: sm
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sm-service-prestable
+spec:
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: http-sm-pre
+  selector:
+    app: sm
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sm-service-production
+spec:
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: http-sm-prod
   selector:
     app: sm

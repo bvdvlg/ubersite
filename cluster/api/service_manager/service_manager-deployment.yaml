@@ -1,11 +1,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sm-deployment
+  name: sm-deployment-testing
   labels:
     app: sm
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       app: sm
@@ -15,9 +15,66 @@ spec:
         app: sm
     spec:
       containers:
-      - name: sm
-        image: 158.160.22.115:5000/ubersite/service_manager:latest
+      - name: sm-testing
+        image: 158.160.22.115:5000/ubersite/service_manager:testing
         imagePullPolicy: Always
+        env:
+        - name: service_settings_configuration_file
+          value: "configuration/configs/testing.json"
         ports:
-        - containerPort: 8000
-          name: http-sm-svc
+        - containerPort: 80
+          name: http-sm-testing
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sm-deployment-prestable
+  labels:
+    app: sm
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: sm
+  template:
+    metadata:
+      labels:
+        app: sm
+    spec:
+      containers:
+      - name: sm-prestable
+        image: 158.160.22.115:5000/ubersite/service_manager:prestable
+        imagePullPolicy: Always
+        env:
+        - name: service_settings_configuration_file
+          value: "configuration/configs/prestable.json"
+        ports:
+        - containerPort: 80
+          name: http-sm-pre
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sm-deployment-production
+  labels:
+    app: sm
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: sm
+  template:
+    metadata:
+      labels:
+        app: sm
+    spec:
+      containers:
+      - name: sm-production
+        image: 158.160.22.115:5000/ubersite/service_manager:production
+        imagePullPolicy: Always
+        env:
+        - name: service_settings_configuration_file
+          value: "configuration/configs/production.json"
+        ports:
+        - containerPort: 80
+          name: http-sm-prod

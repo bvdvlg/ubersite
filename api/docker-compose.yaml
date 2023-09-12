@@ -1,0 +1,4 @@
+version: "3"
+include:
+  - service_manager/docker-compose.yaml
+  - converter/docker-compose.yaml
