@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from starlette import status
 from starlette.responses import Response
-from json_to_dict.model import JsonBase
+from api.json_to_dict.model import JsonBase
 
 json2dict_router = APIRouter()
 

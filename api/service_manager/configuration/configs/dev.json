@@ -1,0 +1,40 @@
+{
+    "service_config": {
+      "json2dict": {
+        "host": "localhost:8001",
+        "auth_required": false,
+        "path": "/json2dict"
+      },
+      "replace": {
+        "host": "localhost:8001",
+        "auth_required": false,
+        "path": "/replace"
+      }
+    },
+    "logger_config": {
+      "version": 1,
+      "disable_existing_loggers": false,
+      "formatters": {
+        "default": {
+          "()": "uvicorn.logging.DefaultFormatter",
+          "fmt": "%(levelprefix)s %(asctime)s %(message)s",
+          "datefmt": "%Y-%m-%d %H:%M:%S"
+        }
+      },
+      "handlers": {
+        "default": {
+          "formatter": "default",
+          "class": "logging.StreamHandler",
+          "stream": "ext://sys.stderr"
+        }
+      },
+      "loggers": {
+        "foo-logger": {
+          "handlers": [
+            "default"
+          ],
+          "level": "DEBUG"
+        }
+      }
+    }
+  }

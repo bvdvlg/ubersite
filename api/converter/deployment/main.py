@@ -7,5 +7,4 @@ parser.add_argument("-p", "--port", type=int, help="Defines the environment of p
 
 if __name__ == "__main__":
     args = parser.parse_args()
-    print(args)
     uvicorn.run("api.app:app", host=args.host, port=args.port, reload=True)

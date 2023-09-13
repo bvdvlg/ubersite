@@ -22,18 +22,14 @@ class Users(BaseModel):
 
     login = Column(VARCHAR(40), nullable=False)
     email = Column(VARCHAR(40), nullable=False)
-    tokens = relationship("Tokens", backref="user")
-
-class UsersPrivate(BaseModel):
-    __tablename__ = 'passwords'
-
     passwd = Column(PasswordType(max_length=1094,
         schemes=[
             'pbkdf2_sha512',
             'md5_crypt'
         ],
         deprecated=['md5_crypt']
-    ))
+    ), nullable=False)
+    tokens = relationship("Tokens", backref="user")
 
 class Tokens(BaseModel):
     __tablename__ = 'tokens'

@@ -8,4 +8,4 @@ class JsonBase(BaseModel):
         try:
             return json.loads(self.data)
         except ValueError:
-            None
+            return None

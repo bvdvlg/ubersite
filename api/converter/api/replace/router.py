@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from starlette import status
 from starlette.responses import Response
-from replace.model import ReplaceBase
+from api.replace.model import ReplaceBase
 
 replace_router = APIRouter()
 
