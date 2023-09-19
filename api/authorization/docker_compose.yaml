@@ -1,0 +1,43 @@
+version: "3"
+services:
+  auth_database:
+    image: postgres
+    volumes: 
+    - ./db/data:/var/lib/postgresql/data/
+    ports:
+    - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=postgres 
+      - POSTGRES_DB=projectdatabase
+      - POSTGRES_USER=postgres
+  authorization_production:
+    build:
+      context: ./
+      dockerfile: deployment/Dockerfile
+    environment:
+      - postgres_prefix=postgresql+psycopg2
+      - postgres_username=postgres
+      - postgres_passwd=postgres
+      - postgres_host=0.0.0.0
+      - postgres_port=5432
+      - postgres_database_name=projectdatabase
+    ports:
+    - "8002:80"
+    depends_on:
+    - auth_database
+  authorization_testing:
+    build:
+      context: ./
+      dockerfile: deployment/Dockerfile
+    environment:
+      - postgres_prefix=postgresql+psycopg2
+      - postgres_username=postgres
+      - postgres_passwd=postgres
+      - postgres_host=0.0.0.0
+      - postgres_port=5432
+      - postgres_database_name=projectdatabase
+    ports:
+    - "8002:80"
+    depends_on:
+    - auth_database
+  

@@ -1,0 +1,77 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-db-deployment-prod
+  labels:
+    app: auth-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auth-db
+  template:
+    metadata:
+      labels:
+        app: auth-db
+    spec:
+      containers:
+      - name: auth-db
+        image: postgres
+        imagePullPolicy: Always
+        env:
+        - name: POSTGRES_PASSWORD
+          value: "postgres" 
+        - name: POSTGRES_DB
+          value: "projectdatabase"
+        - name: POSTGRES_USER
+          value: "postgres"
+        ports:
+        - containerPort: 5432
+          name: authdbprod
+        volumeMounts:
+        - name: vol
+          mountPath: /var/lib/postgresql/data/
+      volumes:
+      - name: vol
+        persistentVolumeClaim:
+          claimName: authdbprod
+---
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-db-deployment-testing
+  labels:
+    app: auth-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auth-db
+  template:
+    metadata:
+      labels:
+        app: auth-db
+    spec:
+      containers:
+      - name: auth-db
+        image: postgres
+        imagePullPolicy: Always
+        env:
+        - name: POSTGRES_PASSWORD
+          value: "postgres" 
+        - name: POSTGRES_DB
+          value: "projectdatabase"
+        - name: POSTGRES_USER
+          value: "postgres"
+        ports:
+        - containerPort: 5432
+          name: authdbtest
+        volumeMounts:
+        - name: vol
+          mountPath: /var/lib/postgresql/data/
+      volumes:
+      - name: vol
+        persistentVolumeClaim:
+          claimName: authdbtest

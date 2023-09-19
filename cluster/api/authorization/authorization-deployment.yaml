@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-deployment-production
+  labels:
+    app: auth
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auth
+  template:
+    metadata:
+      labels:
+        app: auth
+    spec:
+      containers:
+      - name: auth
+        image: 158.160.22.115:5000/ubersite/authorization_production:latest
+        imagePullPolicy: Always
+        env:
+        - name: postgres_prefix
+          value: "postgresql+psycopg2"
+        - name: postgres_username
+          value: "postgres"
+        - name: postgres_passwd
+          value: "postgres"
+        - name: postgres_host
+          value: "auth-db-service"
+        - name: postgres_port
+          value: "80"
+        - name: postgres_database_name
+          value: "projectdatabase"
+        ports:
+        - containerPort: 80
+          name: http-auth-svc

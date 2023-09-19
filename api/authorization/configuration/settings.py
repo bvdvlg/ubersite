@@ -22,4 +22,11 @@ class DatabaseSettings(Settings):
     class Config:
         env_prefix = "postgres_"
 
+class AuthSettings(Settings):
+    auth_enabled: bool
+
+    class Config:
+        env_prefix = "auth_settings_"
+
 database_settings = DatabaseSettings()
+auth_settings = AuthSettings()
