@@ -6,7 +6,9 @@ COPY ./deployment/requirements.txt /code/deployment/requirements.txt
 
 RUN pip install --no-cache-dir --upgrade -r /code/deployment/requirements.txt
 
-COPY ./ /code/
+COPY ./api /code/
+COPY ./configuration /code/
+COPY ./deployment /code/
 
 ENV PYTHONPATH="/code"
 

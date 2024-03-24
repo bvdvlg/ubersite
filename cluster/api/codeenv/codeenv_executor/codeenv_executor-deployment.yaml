@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: codeenv-executor-deployment
+  labels:
+    app: codeenv-executor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: codeenv-executor
+  template:
+    metadata:
+      labels:
+        app: codeenv-executor
+    spec:
+      containers:
+      - name: codeenv-executor
+        image: 158.160.69.117:5000/ubersite/codeenv:latest
+        imagePullPolicy: Always
+        securityContext:
+          privileged: true
+        env:
+        - name: code_executor_user_code_dir
+          value: "/code/user_code"
+        - name: code_executor_lib_code_dir
+          value: "/code/lib_code"
+        - name: code_executor_user_code_mountpoint
+          value: "/code/user_code"
+        - name: code_executor_lib_code_mountpoint
+          value: "/code/lib_code"
+        - name: code_executor_repository
+          value: "158.160.69.117:5000/ubersite"
+        - name: code_executor_registry_host
+          value: "158.160.69.117:5000"
+        ports:
+        - containerPort: 80
+          name: codeexec-svc

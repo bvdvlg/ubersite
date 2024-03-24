@@ -1,0 +1,27 @@
+.mainContainer {
+    display: grid;
+    grid-template-rows: 6fr 6fr 6fr 6fr;
+    gap: 3%;
+    height: 100%;
+}
+
+.inputTextField {
+    grid-row: 1/2;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.stdoutField {
+    grid-row: 2/3;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.stderrField {
+    grid-row: 3/4;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

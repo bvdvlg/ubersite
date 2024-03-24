@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: codeenv-patcher-service
+spec:
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: codepatch-svc
+  selector:
+    app: codeenv-patcher

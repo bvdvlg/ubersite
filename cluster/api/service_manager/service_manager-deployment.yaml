@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: sm-testing
-        image: 158.160.22.115:5000/ubersite/service_manager:testing
+        image: 158.160.69.117:5000/ubersite/service_manager:testing
         imagePullPolicy: Always
         env:
         - name: service_settings_configuration_file
@@ -43,7 +43,7 @@ spec:
     spec:
       containers:
       - name: sm-prestable
-        image: 158.160.22.115:5000/ubersite/service_manager:prestable
+        image: 158.160.69.117:5000/ubersite/service_manager:prestable
         imagePullPolicy: Always
         env:
         - name: service_settings_configuration_file
@@ -70,7 +70,7 @@ spec:
     spec:
       containers:
       - name: sm-production
-        image: 158.160.22.115:5000/ubersite/service_manager:production
+        image: 158.160.69.117:5000/ubersite/service_manager:production
         imagePullPolicy: Always
         env:
         - name: service_settings_configuration_file

@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: auth
-        image: 158.160.22.115:5000/ubersite/authorization_production:latest
+        image: 158.160.69.117:5000/ubersite/authorization:production
         imagePullPolicy: Always
         env:
         - name: postgres_prefix

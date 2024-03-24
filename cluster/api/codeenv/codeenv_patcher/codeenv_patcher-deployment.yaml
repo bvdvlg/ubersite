@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: codeenv-patcher-deployment
+  labels:
+    app: codeenv-patcher
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: codeenv-patcher
+  template:
+    metadata:
+      labels:
+        app: codeenv-patcher
+    spec:
+      containers:
+      - name: codeenv-patcher
+        image: 158.160.69.117:5000/ubersite/codeenv_patcher:latest
+        imagePullPolicy: Always
+        env:
+        - name: code_patcher_host_mount
+          value: "/code/user_code"
+        - name: code_patcher_executor_host
+          value: executor-prod
+        ports:
+        - containerPort: 80
+          name: codepatch-svc

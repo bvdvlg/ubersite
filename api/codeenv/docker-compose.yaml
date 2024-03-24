@@ -1,0 +1,16 @@
+version: "3"
+services:
+  codeenv:
+    privileged: true
+    build:
+      context: ./
+      dockerfile: deployment/Dockerfile
+    environment:
+      code_executor_user_code_dir: "/code/user_code"
+      code_executor_lib_code_dir: "/code/lib_code"
+      code_executor_user_code_mountpoint: "/code/user_code"
+      code_executor_lib_code_mountpoint: "/code/lib_code"
+      code_executor_repository: "158.160.69.117:5000/ubersite"
+      code_executor_registry_host: "158.160.69.117:5000"
+    ports:
+    - "8005:80"

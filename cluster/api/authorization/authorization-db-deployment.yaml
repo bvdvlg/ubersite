@@ -37,7 +37,6 @@ spec:
         persistentVolumeClaim:
           claimName: authdbprod
 ---
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:

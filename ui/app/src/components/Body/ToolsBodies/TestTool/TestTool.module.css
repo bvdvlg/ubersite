@@ -1,0 +1,33 @@
+.mainContainer {
+    display: grid;
+    grid-template-rows: 4fr 1fr 1fr 4fr 8fr;
+    gap: 1%;
+}
+
+.inputTextField {
+    grid-row: 1/2;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.searchingTextField {
+    grid-row: 2/3;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.replacingTextField {
+    grid-row: 3/4;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.outputTextField {
+    grid-row: 4/5;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
